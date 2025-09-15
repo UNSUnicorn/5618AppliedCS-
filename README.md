@@ -15,23 +15,10 @@ journalctl -u openvpn-server@server -e
 sudo openvpn --config /etc/openvpn/server/server.conf
 
 # 创建目录
-sudo mkdir -p /var/log/openvpn
+sudo apt update
+sudo apt install build-essential libpcre3-dev libssl-dev zlib1g-dev git -y
 
-# 将目录所有者更改为 openvpn 运行时使用的用户 (nobody)
-sudo chown nobody:nogroup /var/log/openvpn
+wget http://nginx.org/download/nginx-1.25.3.tar.gz
+tar -zxvf nginx-1.25.3.tar.gz
 
-from socket import *
-
-serverPort = 12000
-serverSocket = socket(AF_INET, SOCK_STREAM)
-serverSocket.bind(('', serverPort))
-serverSocket.listen(1)
-
-print('The server is ready to receive')
-
-while 1:
-    connectionSocket, addr = serverSocket.accept()
-    sentence = connectionSocket.recv(1024)
-    capitalizedSentence = sentence.decode().upper().encode()
-    connectionSocket.send(capitalizedSentence)
-    connectionSocket.close()
+git clone https://github.com/nbs-system/naxsi.git
