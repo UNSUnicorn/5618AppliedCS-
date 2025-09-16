@@ -1,0 +1,6 @@
+Flask==2.3.2 # 或您使用的版本
+google-cloud-aiplatform==1.49.0 # 或您使用的版本
+Pillow==10.3.0 # 或您使用的版本
+requests==2.31.0 # 或您使用的版本
+Flask-Cors==4.0.0
+```    *   重要：`Flask-Cors` 是新增的，用于处理 CORS。可能需要先 `pip install Flask-Cors`。
